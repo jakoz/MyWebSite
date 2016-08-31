@@ -1,0 +1,27 @@
+﻿@model  MyWebSite.ViewModels.ScheduleTaskViewModel
+
+
+
+<div id="scheduleTasks" class="panel-default">
+    <!-- Default panel contents -->
+
+    <div class="panel-heading">@Model.CurrentSchedule.DateOfSchedule.ToShortDateString()</div>
+    <div class="panel-body">
+        
+        @if (Model.CurrentScheduleTask != null)
+        {
+            <div class="list-group">
+                <h4 class="list-group-item-heading">High priority:</h4>
+                <p class="list-group-item">@Model.CurrentScheduleTask.NoteA</p>
+                <h4 class="list-group-item-heading">Medium priority:</h4>
+                <p class="list-group-item">@Model.CurrentScheduleTask.NoteB</p>
+                <h4 class="list-group-item-heading">Low priority:</h4>
+                <p class="list-group-item">@Model.CurrentScheduleTask.NoteC</p>
+            </div>
+           
+        }        
+    </div>
+    <div class="panel-footer">
+        <input type="button" id="btnCreateScheduleTask" class="btn btn-primary" value="New Task" data-toggle="modal" data-target="#myModal" />
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@model MyWebSite.Models.Schedule
+
+@{
+    ViewBag.Title = "CreateSchedule";
+}
+
+<h2>CreateSchedule</h2>
+
+@using (Html.BeginForm("CreateSchedule", "Schedule"))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(s=>s.DateOfSchedule)
+        @Html.TextBoxFor(s => s.DateOfSchedule, new { @class = "form-control dayOfTheSchedule", @type = "date", @Value = @DateTime.Now.Date.ToString() })
+        @Html.ValidationMessageFor(s => s.DateOfSchedule)
+    </div>
+    <button type="submit" id="btnSaveSchedule" class="btn btn-primary">Save</button>
+}
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/createSchedule.js")
+    @Scripts.Render("~/bundles/jqueryval")
+}

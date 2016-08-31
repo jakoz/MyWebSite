@@ -1,0 +1,46 @@
+﻿@model MyWebSite.ViewModels.ScheduleTaskViewModel
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-default">
+            <div class="modal-header modal-default-heading">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">@Model.CurrentSchedule.DateOfSchedule.ToShortDateString()</h4>
+            </div>
+            <div class="modal-body modal-default-body">
+                @using (Html.BeginForm("AddScheduleTask", "Schedule"))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Label("High priority: ")
+                            @Html.TextAreaFor(model => model.NoteA, new { @class = "resizer" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Label("Medium priority: ")
+                            @Html.TextAreaFor(model => model.NoteB, new { @class = "resizer" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.Label("Low priority: ")
+                            @Html.TextAreaFor(model => model.NoteC, new { @class = "resizer" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.CurrentScheduleDate)
+                    <div class="row">
+                        <input type="submit" id="btnSaveScheduleTask" class="btn btn-default" value="Save" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/scheduleTasks.js")
+}

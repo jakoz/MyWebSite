@@ -1,0 +1,33 @@
+﻿@model MyWebSite.ViewModels.ScheduleTaskViewModel
+
+@{
+    ViewBag.Title = "EditSchedule";
+}
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="schedulesPanel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    @Html.Partial("_ListOfSchedules")
+                    <div class="row" style="text-align:center">
+                        <input type="button" id="btnCreateSchedule" class="btn btn-primary" href='@Url.Action("CreateSchedule", "Schedule")' value="New Schedule" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.Partial("_ListOfScheduleTasks")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_AddScheduleTaskForm")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/scheduleTasks.js")
+}
+

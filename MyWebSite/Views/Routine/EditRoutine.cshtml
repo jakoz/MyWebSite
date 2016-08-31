@@ -1,0 +1,82 @@
+﻿@model MyWebSite.ViewModels.RoutineViewModel
+@{
+    ViewBag.Title = "EditRoutine";
+}
+
+<h2>EditRoutine</h2>
+
+<div class="panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <input type="button" id="btnMonday" class="btn btn-primary btn-newRoutine" value="New Routine" data-toggle="modal" data-target="#myModal" />
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-day-routine">
+                <div class="list-group list-Monday">
+                    <p class="list-group-item-heading">Monday</p>
+                    @foreach (var routine in Model.MondayList)
+                    {
+                        <small class="list-group-item">@routine.Activity.Name</small>
+                    }                    
+                </div>
+            </div>
+            <div class="col-day-routine">
+                <div class="list-group">
+                    <p class="list-group-item-heading">Tuesday</p>
+                    @foreach (var routine in Model.TuesdayList)
+                    {
+                        <small class="list-group-item">@routine.Activity.Name</small>
+                    }   
+                </div>
+            </div>
+            <div class="col-day-routine">
+                <p class="list-group-item-heading">Wednesday</p>
+                @foreach (var routine in Model.WednesdayList)
+                {
+                    <small class="list-group-item">@routine.Activity.Name</small>
+                }
+                
+            </div>
+            <div class="col-day-routine">
+                <p class="list-group-item-heading">Thursday</p>
+                @foreach (var routine in Model.ThursdayList)
+                {
+                    <small class="list-group-item">@routine.Activity.Name</small>
+                }
+                
+            </div>
+            <div class="col-day-routine">
+                <p class="list-group-item-heading">Friday</p>
+                @foreach (var routine in Model.FridayList)
+                {
+                    <small class="list-group-item">@routine.Activity.Name</small>
+                }
+                
+            </div>
+            <div class="col-day-routine">
+                <p class="list-group-item-heading">Saturday</p>
+                @foreach (var routine in Model.SaturdayList)
+                {
+                    <small class="list-group-item">@routine.Activity.Name</small>
+                }
+                
+            </div>
+            <div class="col-day-routine">
+                <p class="list-group-item-heading">Sunday</p>
+                @foreach (var routine in Model.SundayList)
+                {
+                    <small class="list-group-item">@routine.Activity.Name</small>
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_AddRoutineForm")
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/editRoutine.js")
+}
