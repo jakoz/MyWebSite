@@ -19,21 +19,20 @@ namespace MyWebSite.ViewModels
         public List<string> Days { get; set; }
         public string Day { get; set; }
 
-        [Display(Name = "Hours")]
-        [Range(0, 24)]
-        public int HourOfTheStartedActivity { get; set; }
+        [DisplayFormat(DataFormatString = @"{0:hh\:mm}", ApplyFormatInEditMode = true)]
+//        [Range(typeof(TimeSpan), "00:00", "23:59")]
+        public TimeOfActivity Time { get; set; }
 
-        [Display(Name = "Hours")]
-        [Range(0, 24)]
-        public int HourOfTheDurationActivity { get; set; }
+        //[Required]
+        //[Display(Name = "Starting of activity")]
+        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        //public TimeSpan StartOfActivity { get; set; }
 
-        [Display(Name = "Minutes")]
-        [Range(0, 59)]
-        public int MinutesOfTheStartedActivity { get; set; }
+        //[Required]
+        //[Display(Name = "Duration of activity")]
+        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        //public TimeSpan DurationOfActivity { get; set; }
 
-        [Display(Name = "Minutes")]
-        [Range(0, 59)]
-        public int MinutesOfTheDurationActivity { get; set; }
         public IEnumerable<TypeOfActivity> Activities { get; set; }
         public int ActivityId { get; set; }
         public RoutineViewModel()

@@ -13,6 +13,7 @@ namespace MyWebSite.Models
         public DbSet<Schedule> Schedule { get; set; }
         public DbSet<TypeOfActivity> TypeOfActivity { get; set; }
         public DbSet<Routine> Routine { get; set; }
+        public DbSet<TimeOfActivity> TimeOfActivity { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

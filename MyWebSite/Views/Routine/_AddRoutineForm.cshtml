@@ -9,43 +9,36 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel"></h4>
             </div>
-            <div class="modal-body modal-default-body">
+            <div class="row modal-body modal-default-body">
                 @using (Html.BeginForm("UpdateRoutine", "Routine"))
                 {
-                    @Html.Label("Begining of the activity")
-                    <div class="row">
-                        <div class="col-md-6">
-                            @Html.Label("Hour: ")
-                            @Html.TextBoxFor(t => t.HourOfTheStartedActivity, new { id = "boxHHStart", type = "number", min = "0", max = "24", @class = "form-control form-control-modal" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.Label("Minute: ")
-                            @Html.TextBoxFor(t => t.MinutesOfTheStartedActivity, new { id = "boxMMStart", type = "number", min = "0", max = "59", @class = "form-control form-control-modal" })
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(t=>t.Time.Start)
                     </div>
-                    @Html.Label("Duration of the activity")
-                    <div class="row">
-                        <div class="col-md-6">
-                            @Html.Label("Hours: ")
-                            @Html.TextBoxFor(t => t.HourOfTheDurationActivity, new { id = "boxHHDuration", type = "number", min = "0", max = "24", @class = "form-control form-control-modal" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.Label("Minutes: ")
-                            @Html.TextBoxFor(t => t.MinutesOfTheDurationActivity, new { id = "boxMMDuration", type = "number", min = "0", max = "59", @class = "form-control form-control-modal" })
-                        </div>
+                    <div class="col-md-6">
+                        @Html.EditorFor(t=>t.Time.Start, "{0:hh\\:mm}", new { htmlAttributes = new {@class = "form-control"}})
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            @Html.Label("TypeOfActivity: ")
-                            @Html.DropDownListFor(t => t.ActivityId, new SelectList(Model.Activities, "Id", "Name"), new { id = "Id", value = "Name", @class = "form-control form-control-modal" })
-                        </div>
-                        <div class="col-md-6">
-                            @Html.DropDownListFor(r => r.Days, new SelectList(Model.Days), new { @class = "form-control" })
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.LabelFor(t=>t.Time.Duration)
                     </div>
-                    <div class="row">
-                        <input type="submit" id="btnSaveScheduleTask" class="btn btn-default" value="Save" />
+                    <div class="col-md-6">
+                        @Html.EditorFor(t=>t.Time.Duration, "{0:hh\\:mm}", new { htmlAttributes = new {@class = "form-control"}})
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(t => t.ActivityId, new SelectList(Model.Activities, "Id", "Name"), new { id = "Id", value = "Name", @class = "form-control form-control-modal" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(r => r.Days, new SelectList(Model.Days), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" id="btnSaveScheduleTask" class="btn btn-default" value="Save" />
+                </div>
                 }
             </div>
         </div>

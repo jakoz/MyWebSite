@@ -13,16 +13,7 @@ namespace MyWebSite.Models
         public int Id { get; set; }
         public string UserId { get; set; }
         public string Day { get; set; }
-
-        [Required]
-        [DisplayName("Time of starting activity")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh.mm tt}")]
-        public TimeSpan TimeOfStartingActivity { get; set; }
-
-        [Required]
-        [DisplayName("Duration of the activity")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh.mm tt}")]
-        public TimeSpan DurationOfTheActivity { get; set; }
+        public TimeOfActivity Time { get; set; }
 
         [Required]
         [DisplayName("Type of the activity")]

@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
+using MyWebSite.Controllers;
 using MyWebSite.Models;
+using MyWebSite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MyWebSite.Helpers
 {
@@ -16,6 +19,8 @@ namespace MyWebSite.Helpers
         {
             _context = new ApplicationDbContext();
         }
+
+       
         
     }
 }

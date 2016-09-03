@@ -195,3 +195,13 @@ body, h1, .h1{
     width: 13%;
     float:left;
 }
+
+.col-routine-time{
+    font-size:13px;
+    font-weight:bold;
+    color:#4fc342;
+}
+
+.list-group-item-routines{
+    padding: 10px 0px;
+}

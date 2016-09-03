@@ -261,6 +261,18 @@
     <Compile Include="Migrations\201608312016252_ChangeStructureOfScheduleTaskv2.Designer.cs">
       <DependentUpon>201608312016252_ChangeStructureOfScheduleTaskv2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609031107537_AddEndOfActivityPropertyToRoutines.cs" />
+    <Compile Include="Migrations\201609031107537_AddEndOfActivityPropertyToRoutines.Designer.cs">
+      <DependentUpon>201609031107537_AddEndOfActivityPropertyToRoutines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609031612133_AddTimeOfActivity.cs" />
+    <Compile Include="Migrations\201609031612133_AddTimeOfActivity.Designer.cs">
+      <DependentUpon>201609031612133_AddTimeOfActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609031629555_ChangeTimeOfActivity.cs" />
+    <Compile Include="Migrations\201609031629555_ChangeTimeOfActivity.Designer.cs">
+      <DependentUpon>201609031629555_ChangeTimeOfActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -268,6 +280,7 @@
     <Compile Include="Models\Routine.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\ScheduleTask.cs" />
+    <Compile Include="Models\TimeOfActivity.cs" />
     <Compile Include="Models\TypeOfActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -416,6 +429,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608312016252_ChangeStructureOfScheduleTaskv2.resx">
       <DependentUpon>201608312016252_ChangeStructureOfScheduleTaskv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609031107537_AddEndOfActivityPropertyToRoutines.resx">
+      <DependentUpon>201609031107537_AddEndOfActivityPropertyToRoutines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609031612133_AddTimeOfActivity.resx">
+      <DependentUpon>201609031612133_AddTimeOfActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609031629555_ChangeTimeOfActivity.resx">
+      <DependentUpon>201609031629555_ChangeTimeOfActivity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
