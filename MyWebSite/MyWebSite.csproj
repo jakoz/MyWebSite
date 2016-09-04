@@ -273,6 +273,22 @@
     <Compile Include="Migrations\201609031629555_ChangeTimeOfActivity.Designer.cs">
       <DependentUpon>201609031629555_ChangeTimeOfActivity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609031705516_RequiredTimeSpan.cs" />
+    <Compile Include="Migrations\201609031705516_RequiredTimeSpan.Designer.cs">
+      <DependentUpon>201609031705516_RequiredTimeSpan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609032300472_FixRoutines.cs" />
+    <Compile Include="Migrations\201609032300472_FixRoutines.Designer.cs">
+      <DependentUpon>201609032300472_FixRoutines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609040019054_NewPropertiesForTimeActivity.cs" />
+    <Compile Include="Migrations\201609040019054_NewPropertiesForTimeActivity.Designer.cs">
+      <DependentUpon>201609040019054_NewPropertiesForTimeActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609040030039_NewPropertiesForTimeActivityv1.cs" />
+    <Compile Include="Migrations\201609040030039_NewPropertiesForTimeActivityv1.Designer.cs">
+      <DependentUpon>201609040030039_NewPropertiesForTimeActivityv1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -438,6 +454,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609031629555_ChangeTimeOfActivity.resx">
       <DependentUpon>201609031629555_ChangeTimeOfActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609031705516_RequiredTimeSpan.resx">
+      <DependentUpon>201609031705516_RequiredTimeSpan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609032300472_FixRoutines.resx">
+      <DependentUpon>201609032300472_FixRoutines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609040019054_NewPropertiesForTimeActivity.resx">
+      <DependentUpon>201609040019054_NewPropertiesForTimeActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609040030039_NewPropertiesForTimeActivityv1.resx">
+      <DependentUpon>201609040030039_NewPropertiesForTimeActivityv1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

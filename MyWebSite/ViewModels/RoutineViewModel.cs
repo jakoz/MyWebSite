@@ -18,20 +18,8 @@ namespace MyWebSite.ViewModels
         public List<Routine> SundayList { get; set; }
         public List<string> Days { get; set; }
         public string Day { get; set; }
-
-        [DisplayFormat(DataFormatString = @"{0:hh\:mm}", ApplyFormatInEditMode = true)]
-//        [Range(typeof(TimeSpan), "00:00", "23:59")]
         public TimeOfActivity Time { get; set; }
-
-        //[Required]
-        //[Display(Name = "Starting of activity")]
-        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        //public TimeSpan StartOfActivity { get; set; }
-
-        //[Required]
-        //[Display(Name = "Duration of activity")]
-        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
-        //public TimeSpan DurationOfActivity { get; set; }
+        public IEnumerable<TimeOfActivity> Times { get; set; }
 
         public IEnumerable<TypeOfActivity> Activities { get; set; }
         public int ActivityId { get; set; }

@@ -29,6 +29,7 @@ namespace MyWebSite.Controllers
             string userId = User.Identity.GetUserId();
             var viewModel = new RoutineViewModel
             {
+                Times = _context.TimeOfActivity.ToList(),
                 Activities = _context.TypeOfActivity.ToList(),
                 MondayList = _context.Routine.Where(r => r.Day == "Monday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
                 TuesdayList = _context.Routine.Where(r => r.Day == "Tuesday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
@@ -58,15 +59,10 @@ namespace MyWebSite.Controllers
                 return RedirectToAction("EditRoutine");
             }
 
+            routine.Time.End = routine.Time.Start + routine.Time.Duration;
             var day = routine.Days[0];
-            //timesForRoutine = RoutinesHelper.PrepareTimeValuesToSave(routine);
 
-            //Routine routinePrevious = _context.Routine
-            //    .OrderBy(r => r.EndOfActivity)
-            //    .ToList()
-            //    .LastOrDefault(r => r.EndOfActivity.TotalMinutes <= routine.StartOfActivity.TotalMinutes && r.UserId == userId && r.Day == day);
-
-
+            List<TimeOfActivity> times = _context.TimeOfActivity.Where(t=>t.UserId == userId).ToList();
             Routine routineCovered = _context.Routine
                 .OrderBy(r => r.Time.End)
                 .ToList()
@@ -77,8 +73,8 @@ namespace MyWebSite.Controllers
                 r.Time.Start.TotalMinutes < routine.Time.End.TotalMinutes) ||
                 (r.Time.End.TotalMinutes > routine.Time.Start.TotalMinutes &&
                 r.Time.End.TotalMinutes < routine.Time.End.TotalMinutes) ||
-                (r.Time.Start.TotalMinutes > routine.Time.Start.TotalMinutes &&
-                r.Time.End.TotalMinutes < routine.Time.End.TotalMinutes) &&
+                (r.Time.Start.TotalMinutes >= routine.Time.Start.TotalMinutes &&
+                r.Time.End.TotalMinutes <= routine.Time.End.TotalMinutes) &&
                 r.UserId == userId &&
                 r.Day == day);
 
@@ -95,7 +91,7 @@ namespace MyWebSite.Controllers
                 Day = routine.Days[0],
                 Time = routine.Time,
             };
-            
+            NewRoutine.Time.UserId = userId;
 
             _context.Routine.Add(NewRoutine);
             _context.SaveChanges();

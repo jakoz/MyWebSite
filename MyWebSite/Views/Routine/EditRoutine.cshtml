@@ -30,7 +30,7 @@
                     <p class="list-group-item-heading">Tuesday</p>
                     @foreach (var routine in Model.TuesdayList)
                     {
-                    <div class="row list-group-item">
+                    <div class="list-group-item list-group-item-routines">
                         <div class="col-md-12">@routine.Activity.Name</div>
                         <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                     </div>
@@ -41,7 +41,7 @@
                 <p class="list-group-item-heading">Wednesday</p>
                 @foreach (var routine in Model.WednesdayList)
                 {
-                <div class="row list-group-item">
+                <div class="list-group-item list-group-item-routines">
                     <div class="col-md-12">@routine.Activity.Name</div>
                     <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                 </div>
@@ -51,7 +51,7 @@
                 <p class="list-group-item-heading">Thursday</p>
                 @foreach (var routine in Model.ThursdayList)
                 {
-                <div class="row list-group-item">
+                <div class="list-group-item list-group-item-routines">
                     <div class="col-md-12">@routine.Activity.Name</div>
                     <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                 </div>
@@ -61,7 +61,7 @@
                 <p class="list-group-item-heading">Friday</p>
                 @foreach (var routine in Model.FridayList)
                 {
-                <div class="row list-group-item">
+                <div class="list-group-item list-group-item-routines">
                     <div class="col-md-12">@routine.Activity.Name</div>
                     <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                 </div>
@@ -71,7 +71,7 @@
                 <p class="list-group-item-heading">Saturday</p>
                 @foreach (var routine in Model.SaturdayList)
                 {
-                <div class="row list-group-item">
+                <div class="list-group-item list-group-item-routines">
                     <div class="col-md-12">@routine.Activity.Name</div>
                     <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                 </div>
@@ -81,7 +81,7 @@
                 <p class="list-group-item-heading">Sunday</p>
                 @foreach (var routine in Model.SundayList)
                 {
-                <div class="row list-group-item">
+                <div class="list-group-item list-group-item-routines">
                     <div class="col-md-12">@routine.Activity.Name</div>
                     <div class="col-md-12 col-routine-time">@routine.Time.Start - @routine.Time.End</div>
                 </div>

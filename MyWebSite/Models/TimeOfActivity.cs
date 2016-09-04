@@ -11,19 +11,22 @@ namespace MyWebSite.Models
     {
         [Key]
         public int Id { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [DisplayName("Time of starting activity")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh.mm tt}")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public TimeSpan Start { get; set; }
 
         [Required]
         [DisplayName("Duration of the activity")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh.mm tt}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public TimeSpan Duration { get; set; }
 
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh.mm tt}")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public TimeSpan End { get; set; }
     }
 }
