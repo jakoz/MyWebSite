@@ -12,6 +12,7 @@ namespace MyWebSite.Models
         [Key]
         public int Id { get; set; }
         public string UserId { get; set; }
+        public string Day { get; set; }   
 
         [Required]
         [DisplayName("Time of starting activity")]
@@ -19,10 +20,6 @@ namespace MyWebSite.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public TimeSpan Start { get; set; }
 
-        [Required]
-        [DisplayName("Duration of the activity")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
-        public TimeSpan Duration { get; set; }
 
         [Required]
         [DataType(DataType.Time)]

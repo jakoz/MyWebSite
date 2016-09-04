@@ -289,6 +289,22 @@
     <Compile Include="Migrations\201609040030039_NewPropertiesForTimeActivityv1.Designer.cs">
       <DependentUpon>201609040030039_NewPropertiesForTimeActivityv1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609041344539_RemoveDurationFromTimeOfActivity.cs" />
+    <Compile Include="Migrations\201609041344539_RemoveDurationFromTimeOfActivity.Designer.cs">
+      <DependentUpon>201609041344539_RemoveDurationFromTimeOfActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609041954547_FixRoutineModelState.cs" />
+    <Compile Include="Migrations\201609041954547_FixRoutineModelState.Designer.cs">
+      <DependentUpon>201609041954547_FixRoutineModelState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609042009021_FixRoutineModelStatev2.cs" />
+    <Compile Include="Migrations\201609042009021_FixRoutineModelStatev2.Designer.cs">
+      <DependentUpon>201609042009021_FixRoutineModelStatev2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609042015142_FixRoutineModelStatev3.cs" />
+    <Compile Include="Migrations\201609042015142_FixRoutineModelStatev3.Designer.cs">
+      <DependentUpon>201609042015142_FixRoutineModelStatev3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -386,7 +402,7 @@
     <Content Include="Views\Schedule\_ListOfScheduleTasks.cshtml" />
     <Content Include="Views\Schedule\_AddScheduleTaskForm.cshtml" />
     <Content Include="Views\Routine\EditRoutine.cshtml" />
-    <Content Include="Views\Routine\_AddRoutineForm.cshtml" />
+    <Content Include="Views\Routine\EditorTemplates\AddNewRoutineForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -466,6 +482,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609040030039_NewPropertiesForTimeActivityv1.resx">
       <DependentUpon>201609040030039_NewPropertiesForTimeActivityv1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609041344539_RemoveDurationFromTimeOfActivity.resx">
+      <DependentUpon>201609041344539_RemoveDurationFromTimeOfActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609041954547_FixRoutineModelState.resx">
+      <DependentUpon>201609041954547_FixRoutineModelState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609042009021_FixRoutineModelStatev2.resx">
+      <DependentUpon>201609042009021_FixRoutineModelStatev2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609042015142_FixRoutineModelStatev3.resx">
+      <DependentUpon>201609042015142_FixRoutineModelStatev3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

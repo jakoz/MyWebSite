@@ -19,7 +19,7 @@ namespace MyWebSite.ViewModels
         public List<string> Days { get; set; }
         public string Day { get; set; }
         public TimeOfActivity Time { get; set; }
-        public IEnumerable<TimeOfActivity> Times { get; set; }
+        public List<TimeOfActivity> Times { get; set; }
 
         public IEnumerable<TypeOfActivity> Activities { get; set; }
         public int ActivityId { get; set; }

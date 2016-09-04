@@ -8,7 +8,7 @@
 <div class="panel-default">
     <div class="panel-heading">
         <div class="row">
-            <input type="button" id="btnMonday" class="btn btn-primary btn-newRoutine" value="New Routine" data-toggle="modal" data-target="#myModal" />
+            <input type="button" id="btnCreateRoutineForm" class="btn btn-primary btn-newRoutine" value="New Routine" data-toggle="modal" data-target="#modalCreateNewRoutine" />
         </div>
     </div>
     <div class="panel-body">
@@ -90,8 +90,7 @@
         </div>
     </div>
 </div>
-
-@Html.Partial("_AddRoutineForm")
+@Html.EditorFor(m=>Model,"AddNewRoutineForm")
 
 @section Scripts{
     @Scripts.Render("~/Scripts/editRoutine.js")

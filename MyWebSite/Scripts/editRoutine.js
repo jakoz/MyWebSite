@@ -4,6 +4,10 @@
         dayOfNewRoutine = $(this).attr("id").substr(3);
     })
 
+    $("#btnCreateAnotherActivity").on("click", function () {
+        $("#divAnotherActivity").append("<input type='textbox' class='form-control'/>");
+    })
+
     $('#myModal').on('shown.bs.modal', function () {
         $("modal").show();
         $('#myInput').focus();
