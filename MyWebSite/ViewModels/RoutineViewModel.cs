@@ -18,9 +18,11 @@ namespace MyWebSite.ViewModels
         public List<Routine> SundayList { get; set; }
         public List<string> Days { get; set; }
         public string Day { get; set; }
+
+        [Required(ErrorMessage = "The time is required")]
         public TimeOfActivity Time { get; set; }
         public List<TimeOfActivity> Times { get; set; }
-
+        public string NameOfNewActivity { get; set; }
         public IEnumerable<TypeOfActivity> Activities { get; set; }
         public int ActivityId { get; set; }
         public RoutineViewModel()

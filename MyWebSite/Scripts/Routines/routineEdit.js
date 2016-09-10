@@ -5,7 +5,14 @@
     })
 
     $("#btnCreateAnotherActivity").on("click", function () {
-        $("#divAnotherActivity").append("<input type='textbox' class='form-control'/>");
+        //$("#divAnotherActivity").append("<input type='textbox' id='ActivityId' class='form-control'/>");
+        var marker = $('<span />').insertBefore('#NameOfNewActivity');
+
+        $("#NameOfNewActivity").detach().attr('type', 'text').insertAfter(marker);
+        marker.remove();
+        debugger;
+        $(this).addClass(".btn-blocked");
+        $(this).prop("disabled", true);
     })
 
     $('#myModal').on('shown.bs.modal', function () {

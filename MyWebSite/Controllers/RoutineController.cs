@@ -29,6 +29,7 @@ namespace MyWebSite.Controllers
             string userId = User.Identity.GetUserId();
             var viewModel = new RoutineViewModel
             {
+                NameOfNewActivity = "",
                 Times = _context.TimeOfActivity.Where(model=>model.UserId == userId).ToList(),
                 Activities = _context.TypeOfActivity.ToList(),
                 MondayList = _context.Routine.Where(r => r.Day == "Monday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
@@ -82,11 +83,20 @@ namespace MyWebSite.Controllers
                     return RedirectToAction("EditRoutine");
                 }
             }
+            TypeOfActivity newActivity;
+            if (routine.NameOfNewActivity != null)
+            {
+                newActivity = _context.TypeOfActivity.Add(new TypeOfActivity(routine.NameOfNewActivity));
+            }
+            else
+            {
+                newActivity = _context.TypeOfActivity.Single(r => r.Id == routine.ActivityId);
+            }
 
             Routine NewRoutine = new Routine
             {
                 UserId = User.Identity.GetUserId(),
-                Activity = _context.TypeOfActivity.Single(r=>r.Id == routine.ActivityId),
+                Activity = newActivity,
                 Day = day,
                 Time = routine.Time,               
             };

@@ -1,0 +1,58 @@
+﻿@model MyWebSite.ViewModels.RoutineViewModel
+
+@using (Html.BeginForm("UpdateRoutine", "Routine"))
+{
+    for (int i = 0; i < Model.Times.Count(); i++)
+    {
+        @Html.HiddenFor(m => m.Times[i].Id)
+        @Html.HiddenFor(m => m.Times[i].Day)
+        @Html.HiddenFor(m => m.Times[i].UserId)
+        @Html.HiddenFor(m => m.Times[i].End)
+        @Html.HiddenFor(m => m.Times[i].Start)
+    }
+    <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(t => t.Time.Start)
+            @Html.ValidationMessageFor(t => t.Time, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-6">
+            @Html.EditorFor(t => t.Time.Start, "{0:hh\\:mm}", new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.LabelFor(t => t.Time.End)
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(t => t.Time.End, "{0:hh\\:mm}", new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(r => r.Days, new SelectList(Model.Days), new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(t => t.ActivityId, new SelectList(Model.Activities, "Id", "Name"), new { id = "Id", value = "Name", @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <input type="button" id="btnCreateAnotherActivity" class="btn btn-primary" value="Other" />
+                            @Html.HiddenFor(model => model.NameOfNewActivity)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="divAnotherActivity" class="col-md-6 col-md-offset-6">
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" id="btnSaveRoutine" class="btn btn-default" value="Save" />
+                    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

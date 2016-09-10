@@ -11,5 +11,14 @@ namespace MyWebSite.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public TypeOfActivity()
+        {
+
+        }
+        public TypeOfActivity(string name)
+        {
+            this.Name = name;
+        }
     }
 }
