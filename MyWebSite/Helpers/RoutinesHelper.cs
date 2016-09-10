@@ -20,7 +20,62 @@ namespace MyWebSite.Helpers
             _context = new ApplicationDbContext();
         }
 
-       
-        
+        private bool IsEndTimeAfterStartTime(RoutineViewModel routine)
+        {
+            if (routine.Time.End > routine.Time.Start)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        private bool IsTimeNotCoverAnother(RoutineViewModel routine)
+        {
+            var day = routine.Days[0];
+
+            if (routine.Times != null)
+            {
+                TimeOfActivity routineCovered = routine.Times
+                .OrderBy(r => r.End)
+                .ToList()
+                .FirstOrDefault(r =>
+                (r.End.TotalMinutes > routine.Time.End.TotalMinutes &&
+                r.Start.TotalMinutes < routine.Time.Start.TotalMinutes) ||
+                (r.Start.TotalMinutes > routine.Time.Start.TotalMinutes &&
+                r.Start.TotalMinutes < routine.Time.End.TotalMinutes) ||
+                (r.End.TotalMinutes > routine.Time.Start.TotalMinutes &&
+                r.End.TotalMinutes < routine.Time.End.TotalMinutes) ||
+                (r.Start.TotalMinutes >= routine.Time.Start.TotalMinutes &&
+                r.End.TotalMinutes <= routine.Time.End.TotalMinutes) &&
+                r.Day == day);
+
+                if (routineCovered == null) return true;
+                else return false;
+            }
+            return true;
+        }
+
+        public bool ValidateTimeOfRoutine(RoutineViewModel routine)
+        {
+            if (IsEndTimeAfterStartTime(routine) && IsTimeNotCoverAnother(routine))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public TypeOfActivity TakeAndUpdateTypeOfActivities(RoutineViewModel routine)
+        {
+            if (routine.NameOfNewActivity != null)
+            {
+                _context.TypeOfActivity.Add(new TypeOfActivity(routine.NameOfNewActivity));
+                return new TypeOfActivity(routine.NameOfNewActivity);
+            }
+            else
+            {
+                return _context.TypeOfActivity.Single(r => r.Id == routine.ActivityId);
+            }
+        }
     }
 }

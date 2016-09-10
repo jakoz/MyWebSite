@@ -26,7 +26,5 @@ namespace MyWebSite.Controllers
             List<Schedule> schedules = _context.Schedule.Where(s => s.ScheduleId == userId).ToList();
             return Json(!schedules.Any(s => s.DateOfSchedule == DateOfSchedule), JsonRequestBehavior.AllowGet);
         }
-
-       
     }
 }

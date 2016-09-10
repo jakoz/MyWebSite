@@ -19,6 +19,7 @@ namespace MyWebSite.Controllers
         public RoutineController()
         {
             _context = new ApplicationDbContext();
+            _routinesHelper = new RoutinesHelper();
         }
         
         // GET: Routine
@@ -55,43 +56,14 @@ namespace MyWebSite.Controllers
         public ActionResult UpdateRoutine(RoutineViewModel routine)
         {
             string userId = User.Identity.GetUserId();
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid == false || _routinesHelper.ValidateTimeOfRoutine(routine) == false)
             {
                 return RedirectToAction("EditRoutine");
             }
 
             var day = routine.Days[0];
             
-            if (routine.Times != null)
-            {
-                TimeOfActivity routineCovered = routine.Times
-                .OrderBy(r => r.End)
-                .ToList()
-                .FirstOrDefault(r =>
-                (r.End.TotalMinutes > routine.Time.End.TotalMinutes &&
-                r.Start.TotalMinutes < routine.Time.Start.TotalMinutes) ||
-                (r.Start.TotalMinutes > routine.Time.Start.TotalMinutes &&
-                r.Start.TotalMinutes < routine.Time.End.TotalMinutes) ||
-                (r.End.TotalMinutes > routine.Time.Start.TotalMinutes &&
-                r.End.TotalMinutes < routine.Time.End.TotalMinutes) ||
-                (r.Start.TotalMinutes >= routine.Time.Start.TotalMinutes &&
-                r.End.TotalMinutes <= routine.Time.End.TotalMinutes) &&
-                r.Day == day);
-
-                if (routineCovered != null)
-                {
-                    return RedirectToAction("EditRoutine");
-                }
-            }
-            TypeOfActivity newActivity;
-            if (routine.NameOfNewActivity != null)
-            {
-                newActivity = _context.TypeOfActivity.Add(new TypeOfActivity(routine.NameOfNewActivity));
-            }
-            else
-            {
-                newActivity = _context.TypeOfActivity.Single(r => r.Id == routine.ActivityId);
-            }
+            TypeOfActivity newActivity = _routinesHelper.TakeAndUpdateTypeOfActivities(routine);            
 
             Routine NewRoutine = new Routine
             {
