@@ -32,7 +32,7 @@ namespace MyWebSite.Controllers
             {
                 NameOfNewActivity = "",
                 Times = _context.TimeOfActivity.Where(model=>model.UserId == userId).ToList(),
-                Activities = _context.TypeOfActivity.ToList(),
+                Activities = _context.TypeOfActivity.ToList().Distinct(),
                 MondayList = _context.Routine.Where(r => r.Day == "Monday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
                 TuesdayList = _context.Routine.Where(r => r.Day == "Tuesday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
                 WednesdayList = _context.Routine.Where(r => r.Day == "Wednesday" && r.UserId == userId).OrderBy(r => r.Time.End).ToList(),
@@ -62,16 +62,26 @@ namespace MyWebSite.Controllers
             }
 
             var day = routine.Days[0];
-            
-            TypeOfActivity newActivity = _routinesHelper.TakeAndUpdateTypeOfActivities(routine);            
 
             Routine NewRoutine = new Routine
             {
                 UserId = User.Identity.GetUserId(),
-                Activity = newActivity,
                 Day = day,
-                Time = routine.Time,               
+                Time = routine.Time,
             };
+
+            if (routine.NameOfNewActivity != null)
+            {
+                TypeOfActivity newActivity = new TypeOfActivity(routine.NameOfNewActivity);
+                _context.TypeOfActivity.Add(newActivity);
+                NewRoutine.Activity = newActivity;
+            }
+            else
+            {
+                NewRoutine.Activity = _context.TypeOfActivity.Single(r => r.Id == routine.ActivityId);
+            }
+
+            
             NewRoutine.Time.UserId = userId;
             NewRoutine.Time.Day = day;
 

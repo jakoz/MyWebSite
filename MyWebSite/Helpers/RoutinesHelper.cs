@@ -64,18 +64,5 @@ namespace MyWebSite.Helpers
             else
                 return false;
         }
-
-        public TypeOfActivity TakeAndUpdateTypeOfActivities(RoutineViewModel routine)
-        {
-            if (routine.NameOfNewActivity != null)
-            {
-                _context.TypeOfActivity.Add(new TypeOfActivity(routine.NameOfNewActivity));
-                return new TypeOfActivity(routine.NameOfNewActivity);
-            }
-            else
-            {
-                return _context.TypeOfActivity.Single(r => r.Id == routine.ActivityId);
-            }
-        }
     }
 }
