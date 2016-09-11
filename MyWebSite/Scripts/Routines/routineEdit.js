@@ -4,6 +4,10 @@
         dayOfNewRoutine = $(this).attr("id").substr(3);
     })
 
+    $(".list-group-item-routines").hover(function () {
+    })
+    
+
     $("#btnCreateAnotherActivity").on("click", function () {
         //$("#divAnotherActivity").append("<input type='textbox' id='ActivityId' class='form-control'/>");
         var marker = $('<span />').insertBefore('#NameOfNewActivity');

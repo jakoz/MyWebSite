@@ -203,3 +203,13 @@ body, h1, .h1{
 .list-group-item-routines{
     padding: 10px 0px;
 }
+
+.list-group-item-routines:hover{
+    cursor: pointer;
+}
+
+.routine-icons{
+    margin-top: -20px;
+    margin-left: 110px;
+    position:absolute;
+}
