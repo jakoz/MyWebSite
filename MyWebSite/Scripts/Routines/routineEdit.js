@@ -2,11 +2,28 @@
     var dayOfNewRoutine = null;
     $(".btn-newRoutine").on("click", function () {
         dayOfNewRoutine = $(this).attr("id").substr(3);
-    })
+    });
 
     $(".list-group-item-routines").hover(function () {
-    })
-    
+    });
+
+    $(".routine-icon-img").on("click", function () {
+        if ( confirm("Remove routine?") )
+        {
+            var id = $(this).attr("id");
+            $.ajax({
+                url: '/Routine/DeleteRoutine/?' + id,
+                type: "POST",
+                data: { "id": id },
+                success: function (data) {
+                    $("body").html(data);
+                },
+                error: function (exception) {
+                    alert('Exeption:'+exception.statusText);
+                }
+            });
+        }
+    });
 
     $("#btnCreateAnotherActivity").on("click", function () {
         //$("#divAnotherActivity").append("<input type='textbox' id='ActivityId' class='form-control'/>");

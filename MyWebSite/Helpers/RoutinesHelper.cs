@@ -39,15 +39,15 @@ namespace MyWebSite.Helpers
                 .OrderBy(r => r.End)
                 .ToList()
                 .FirstOrDefault(r =>
-                (r.End.TotalMinutes > routine.Time.End.TotalMinutes &&
+                (r.Day == day) &&
+                ((r.End.TotalMinutes > routine.Time.End.TotalMinutes &&
                 r.Start.TotalMinutes < routine.Time.Start.TotalMinutes) ||
                 (r.Start.TotalMinutes > routine.Time.Start.TotalMinutes &&
                 r.Start.TotalMinutes < routine.Time.End.TotalMinutes) ||
                 (r.End.TotalMinutes > routine.Time.Start.TotalMinutes &&
                 r.End.TotalMinutes < routine.Time.End.TotalMinutes) ||
                 (r.Start.TotalMinutes >= routine.Time.Start.TotalMinutes &&
-                r.End.TotalMinutes <= routine.Time.End.TotalMinutes) &&
-                r.Day == day);
+                r.End.TotalMinutes <= routine.Time.End.TotalMinutes)));
 
                 if (routineCovered == null) return true;
                 else return false;

@@ -7,7 +7,7 @@
         type: 'GET',
         data: { "id": date },
         success: function (data) {
-            $(".schedulesPanel").html(data);
+            $("body").html(data);
         },
         error: function () {
             alert("Failure");

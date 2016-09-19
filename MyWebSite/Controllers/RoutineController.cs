@@ -89,5 +89,16 @@ namespace MyWebSite.Controllers
             _context.SaveChanges();
             return RedirectToAction("EditRoutine");
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult DeleteRoutine(string id)
+        {
+            var idInt = Int32.Parse(id);
+            TimeOfActivity time = _context.TimeOfActivity.Single(t => t.Id == idInt);
+            _context.TimeOfActivity.Remove(time);
+            _context.SaveChanges();
+            return RedirectToAction("EditRoutine");
+        }
     }
 }
