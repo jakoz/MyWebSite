@@ -123,5 +123,16 @@ namespace MyWebSite.Controllers
             _context.SaveChanges();
             return RedirectToAction("EditSchedule");
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult DeleteRoutine(string id)
+        {
+            var idInt = Int32.Parse(id);
+            var schedule = _context.Schedule.Single(s => s.Id == idInt);
+            _context.Schedule.Remove(schedule);
+            _context.SaveChanges();
+            return RedirectToAction("EditSchedule");
+        }
     }
 }
